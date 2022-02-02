@@ -18,11 +18,11 @@ const __dirname = path.resolve();
 
 connectDb();
 
-app.listen(process.env.port, console.log("server running"));
+app.listen(process.env.port || 5000, console.log("server running"));
 
-app.get("/", (req, res) => {
-  res.send("got the url/");
-});
+// app.get("/", (req, res) => {
+//   res.send("got the url/");
+// });
 
 // app.get("/api/products", (req, res) => {
 //   res.json(products);
@@ -37,15 +37,15 @@ app.use("/api/sort", sortApiRoutes);
 //   res.json(product);
 // });
 
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static(path.join(__dirname, "/appy/build/index.html")));
-//   app.get("*", (req, res) => {
-//     res.sendFile(path.resolve(__dirname, "appy", "build", "index.html"));
-//   });
-// } else {
-//   app.get("/", (req, res) => {
-//     res.send("api serving");
-//   });
-// }
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/appy/build/index.html")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "appy", "build", "index.html"));
+  });
+} else {
+  app.get("/", (req, res) => {
+    res.send("api serving");
+  });
+}
 
 console.log(__dirname);
