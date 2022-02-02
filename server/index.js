@@ -18,7 +18,7 @@ const __dirname = path.resolve();
 
 connectDb();
 
-app.listen(5000, console.log("server running"));
+app.listen(process.env.port, console.log("server running"));
 
 // app.get("/", (req, res) => {
 //   res.send("got the url/");
