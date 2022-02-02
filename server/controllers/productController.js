@@ -30,6 +30,7 @@ export const getProductbyIdController = expressAsyncHandler(
   }
 );
 
+//  /api/category/:cat
 export const getProductbycategoryController = expressAsyncHandler(
   async (req, res) => {
     // console.log(req.params);
@@ -47,7 +48,7 @@ export const getProductbycategoryController = expressAsyncHandler(
 );
 
 //  get sorted formatted products from db
-
+// api/product/name
 export const sortProductBynameController = expressAsyncHandler(
   async (req, res) => {
     // const ascending = await ProductModel.find({}).sort((a, b) => {
@@ -60,7 +61,7 @@ export const sortProductBynameController = expressAsyncHandler(
     } else res.json({ err: "couldnt sort" });
   }
 );
-
+// api/product/price
 export const sortProductByPriceController = expressAsyncHandler(
   async (req, res) => {
     // const ascending = await ProductModel.find({}).sort((a, b) => {
@@ -73,7 +74,7 @@ export const sortProductByPriceController = expressAsyncHandler(
     } else res.json({ err: "couldnt sort" });
   }
 );
-
+// api/product/rating
 export const sortProductByRatingController = expressAsyncHandler(
   async (req, res) => {
     const sorting = await ProductModel.find({}).sort({ rating: -1 });
@@ -99,7 +100,7 @@ export const sortProductByRatingController = expressAsyncHandler(
 //     } else res.json({ err: "couldnt sort" });
 //   }
 // );
-
+// api /product/:id/rating
 export const rateProductById = expressAsyncHandler(async (req, res) => {
   //   console.log(req.body);
   //   res.send(req.params.id,req.body.rating);
